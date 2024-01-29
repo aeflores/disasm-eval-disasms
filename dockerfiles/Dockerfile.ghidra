@@ -18,6 +18,12 @@ RUN wget --progress=bar:force:noscroll https://github.com/NationalSecurityAgency
 ENV PATH=$PATH:${USER_HOME}/ghidra_11.0_PUBLIC/support/
 
 # Install this package
+#RUN go get -u github.com/pangine/disasm-eval-disasms/... && \
+#    go install github.com/pangine/disasm-eval-disasms/... && \
+#    echo "[2024-01-26]"
+
 RUN go get -u github.com/pangine/disasm-eval-disasms/... && \
-    go install github.com/pangine/disasm-eval-disasms/... && \
-    echo "[2024-01-26]"
+    cd go/pkg/mod/github.com/pangine/disasm-eval-disasms\@v0.0.0-20201113040947-daa49ee1a727/ && \
+    chmod +w -R .
+COPY . go/pkg/mod/github.com/pangine/disasm-eval-disasms\@v0.0.0-20201113040947-daa49ee1a727/
+RUN go install github.com/pangine/disasm-eval-disasms/...
