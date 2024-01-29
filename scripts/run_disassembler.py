@@ -63,7 +63,7 @@ def main():
         description="Run disassembler on the entire database"
     )
     parser.add_argument(
-        "disassembler", help="disassembler", choices=["ddisasm", "ghidra", "r2", "bap"]
+        "disassembler", help="disassembler", choices=["ddisasm", "ghidra", "radare2", "bap"]
     )
     parser.add_argument("dataset", type=Path, help="disassembler")
     parser.add_argument("--skip", type=str, help="directory pattern to skip")
